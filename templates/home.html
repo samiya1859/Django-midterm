@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container container-fluid">
+  <div class="d-flex flex-wrap px-5 pt-5 align-items-center">
+
+    <div class="col-6">
+      <h1 style="color: darkgreen;">Welcome to our Shop</h1>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus dolorum delectus necessitatibus temporibus adipisci, harum enim unde, suscipit in ipsum provident hic minima molestias reiciendis nihil veniam aut doloribus, ab quidem sit cum at nemo nulla autem! Dolor quaerat ea voluptatem ullam, consequuntur quisquam ut iste. Vitae exercitationem ipsum blanditiis. Nihil rem in quo magni quam sapiente ad ipsa voluptatum saepe quos temporibus, at iste? Eum saepe eos error ea recusandae, deserunt at quidem odio harum inventore. Necessitatibus eos sapiente architecto optio aut esse, facilis, voluptatibus assumenda ut exercitationem nobis molestias, quisquam nam quia odio ipsa? Voluptatem voluptas distinctio eaque.</p>
+    </div>
+    <div class="col-6">
+  <img style="width: 80%; padding-left: 40px;" src="{% static 'carhome.jpg' %}" />
+    </div>
+  </div>
+
+<div style="padding-top: 90px;">
+  <h6 style="color: chocolate;">Show by brands:</h6>
+  {% for br in brand  %}
+  <a class="btn btn-success text-decoration-none text-white" href="{% url "brand_wise_car" br.slug %}">{{br.brand_name}}</a>
+  {% endfor %}
+</div>
+<div style="padding-top: 70px;">
+  <h4>{{data | length}} cars found 
+  <div class="d-flex flex-wrap" style="gap: 20px;">
+    {% for car in data %}
+    <div class="card" style="width: 18rem;">
+      <img  src="{% static 'R.jpeg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Car Model : {{car.car_name}}</h5>
+        <h5 class="">Brand Name : {{car.brand.brand_name}}</h5>
+        <h5 class="">Price : {{car.car_price}}</h5>
+        <a href="{% url "detail_car" car.id %}" class="btn btn-success">Show Details</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+</div>
+
+{% endblock content %}
+
+
+

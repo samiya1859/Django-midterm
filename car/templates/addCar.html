@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    <h4>Add Car Model</h4>
+    {{form | crispy}}
+    <button class="btn btn-warning">Add Car</button>
+</form>
+
+{% endblock content %}
+
+
+

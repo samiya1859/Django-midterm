@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<div class="container container-fluid">
+    <div class="pt-4">
+        <a class="btn btn-info" href="{% url "edit_profile"%}">Edit your profile data</a>
+        
+    </div>
+    
+    <div class="d-flex flex-wrap" style="gap: 20px;padding-top: 80px;">
+        <h6 style="color: chocolate;">Here is your order history:</h6><br>
+        
+        {% for order in data %}
+        <div class="card" style="width: 18rem; gap: 30px;">
+            <img src="{% static 'R.jpeg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Car Model: {{ order.car_name }}</h5>
+                <h5 class="">Brand Name: {{ order.brand.brand_name }}</h5>
+                <h5 class="">Price: {{ order.car_price }}</h5>
+                <h5>Quantity: {{ order.quantity }}</h5>
+            </div>
+        </div>
+        {% endfor %}
+    </div> 
+    
+</div>
+
+{% endblock content %}
